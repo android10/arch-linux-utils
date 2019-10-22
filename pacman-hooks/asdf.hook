@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = asdf
+
+[Action]
+Description = Updating asdf
+When = PostTransaction
+Exec = /home/fernando/.asdf/bin/asdf update; /home/fernando/.asdf/bin/asdf plugin-update --all

@@ -1,0 +1,31 @@
+[user]
+	email = fcejas@gmail.com
+	name = Fernando Cejas
+
+[color]
+	diff = auto
+  	status = auto
+  	branch = auto
+  	interactive = auto
+  	ui = true
+  	pager = true
+
+[color "status"]
+  	added = green
+  	changed = red bold
+  	untracked = magenta bold
+
+[color "branch"]
+  	remote = yellow
+
+[merge]
+	tool = vscode
+
+[mergetool "vscode"]
+	cmd = "code --wait "
+
+[diff]
+	tool = vscode
+
+[difftool "vscode"]
+	cmd = "code --wait --diff  "
