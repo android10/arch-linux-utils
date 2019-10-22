@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = *
+
+[Action]
+Description = Updating asdf Version Manager!
+When = PostTransaction
+Exec = /home/fernando/.asdf/bin/asdf update

@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = *
+
+[Action]
+Description = Updating asdf Version Manager Plugins!
+When = PostTransaction
+Exec = /home/fernando/.asdf/bin/asdf plugin-update "--all"
