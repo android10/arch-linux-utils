@@ -6,4 +6,4 @@ Target = *
 [Action]
 Description = Updating asdf Version Manager Plugins!
 When = PostTransaction
-Exec = /home/fernando/.asdf/bin/asdf plugin-update "--all"
+Exec = /home/fernando/.asdf/bin/asdf plugin-update "--all" || true

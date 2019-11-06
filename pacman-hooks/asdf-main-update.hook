@@ -6,4 +6,4 @@ Target = *
 [Action]
 Description = Updating asdf Version Manager!
 When = PostTransaction
-Exec = /home/fernando/.asdf/bin/asdf update
+Exec = /home/fernando/.asdf/bin/asdf update || true
