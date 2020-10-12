@@ -39,7 +39,6 @@ COMPLETION_WAITING_DOTS="true"
 # /!\ do not use with zsh-autosuggestions
 
 plugins=(archlinux 
-	asdf 
 	bundler 
 	docker 
 	jsontools 
@@ -116,24 +115,37 @@ source $ZSH/oh-my-zsh.sh
 
 # User specific aliases and functions
 # ASDF for managing programming languages versions-------------------------------
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+. /opt/asdf-vm/asdf.sh
 
-asdf_update_java_home() {
-  local current
-  if current=$(asdf current java); then
-    local version=$(echo $current | cut -d ' ' -f 1)
-    export JAVA_HOME=$(asdf where java $version)
-  else
-    echo "No java version set. Type `asdf list-all java` for all versions."
+# LEGACY ASDF 
+# asdf_update_java_home() {
+#  local current
+#  if current=$(asdf current java); then
+#    local version=$(echo $current | cut -d ' ' -f 1)
+#    export JAVA_HOME=$(asdf where java $version)
+#  else
+#    echo "No java version set. Type `asdf list-all java` for all versions."
+#  fi
+# } 
+#asdf_update_java_home
+
+# set JAVA_HOME on every change directory
+function asdf_update_java_home {
+  asdf current java 2>&1 > /dev/null
+  if [[ "$?" -eq 0 ]]
+  then
+      export JAVA_HOME=$(asdf where java)
   fi
 }
-asdf_update_java_home
+
+precmd() { asdf_update_java_home; }
+# end set JAVA_HOME
+
 #--------------------------------------------------------------------------------
 
 
 # ANDROID DEVELOPMENT------------------------------------------------------------
-export ANDROID_SDK_ROOT=/home/fernando/dev/sdk/android
+export ANDROID_SDK_ROOT=/home/fernando/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 #--------------------------------------------------------------------------------
